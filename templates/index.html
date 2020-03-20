@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+	<h1> Neo4j Flask App </h1>
+	<form action="/" method="POST">
+		<input type="text" name="content" id="content" placeholder="Enter Cypher Query">
+		<input type="submit" value="Run Query">
+	</form>
+	<div>
+		Total # of nodes = {{nodes}}<br>
+		Total # of relationships = {{rel}}
+	</div>
+	<div>
+		{% if results is not none %}
+			Query Result: <br>
+			<!-- {{result}} -->
+			{% for result in results %}
+				{{result}}<br>
+			{% endfor %}
+			Query execution time = {{time}} seconds
+		{% endif %}
+	</div>
+		
+</div>
+{% endblock %}
